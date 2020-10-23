@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Information about Status EXTRACT JSON Log REST API</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+	<H1>REST API: /reportStatsREST</H1>
+	<H3>Operation: GET</H3>
+	<H3>Sample Return JSON:</H3>
+	<p><b><i>Remark: Element 0 of this JSON structure contains the descriptions the various elements</i></b></p>
+	<pre class="brush:js" style="font-size:+1">   
+	[
+		{
+			"oldestRunDate":"Oldest Extraction Date/Time",
+			"recentRunDate":"Latest Extraction Date/Time",
+			"totalNumOfRowsInLogs":"Total Number or Extracted Rows Found",
+			"scheduleIDArr":
+				[
+					{
+						"scheduleID":"List of Batch Schedules Found"
+					}
+				],
+			"requestIDArr":
+				[
+					{
+						"requestID":"List of Jobs Found"
+					}
+				],
+			"fileListArr":
+				[
+					{
+						"fileName":"Processed File List"
+					}
+				],
+			"voListArr":
+				[
+					{
+						"voName":"Processed VO List"
+					}
+				]
+		},
+		{
+			"oldestRunDate":"2020-07-13T10:00:06.323Z",
+			"recentRunDate":"2020-08-23T18:04:50.747Z",
+			"totalNumOfRowsInLogs":"38024907",
+			"fileListArr":
+				[
+					{
+						"fileName":"EXTRACT_STATUS_DATA_SCHEDULE_1663072_REQUEST_1663073.JSON"
+					},
+					{
+						...
+					}
+				],
+			"voListArr":
+				[
+					{
+						"voName":"FscmTopModelAM.EgpItemsPublicModelAM.CompetitorProduct"
+					},
+					{
+						...	
+					}
+				],
+			"scheduleIDArr":
+				[
+					{
+						"scheduleID":"1663072"
+					},
+					{
+						...	
+					}
+				],
+			"requestIDArr":
+				[
+					{
+						"requestID":"1663073"
+					},
+					{
+						...	
+					}
+				]
+		},
+		{
+			...
+		}
+	]
+	</pre>
+
+	<H1>REST API: /byDateREST</H1>
+	<H3>Operation: GET</H3>
+	<H3>Sample Return JSON:</H3>
+	<p><b><i>Remark: Element 0 of this JSON structure contains the descriptions the various elements</i></b></p>
+	<pre class="brush:js" style="font-size:+1">   
+	[
+		{
+			"voRunDate":"Run Date",
+			"detailsLine":
+				[
+					{
+						"voName":"View Object Name",
+						"runDate":"Timestamp",
+						"status":"Status",
+						"numberOfRows":"Number of Rows",
+						"extractDuration":"Extract Duration In Sec",
+						"uploadDuration":"Upload Duration In Sec",
+						"totalDuration":"Total Duration In Sec",
+						"queryDuration":"Query Duration In Sec",
+						"fileName":"File Name"
+					}
+				]
+		},
+		{
+			"voRunDate":"2020-07-13T10:01:06",
+			"detailsLine":
+				[
+					{
+						"voName":"FscmTopModelAM.EgpItemsPublicModelAM.CompetitorProduct",
+						"runDate":"2020-07-13T10:01:06.630Z",
+						"status":"SUCCESS",
+						"numberOfRows":0,
+						"extractDuration":0,
+						"uploadDuration":0,
+						"totalDuration":30,
+						"queryDuration":0,
+						"fileName":"EXTRACT_STATUS_DATA_SCHEDULE_1663072_REQUEST_1663073.JSON"
+					},
+					{
+						"voName":"FscmTopModelAM.EgpItemsPublicModelAM.ItemSecurityInstanceGrant",
+						"runDate":"2020-07-13T10:01:06.074Z",
+						"status":"SUCCESS",
+						"numberOfRows":7112,
+						"extractDuration":0,
+						"uploadDuration":0,
+						"totalDuration":11,
+						"queryDuration":0,
+						"fileName":"EXTRACT_STATUS_DATA_SCHEDULE_1663072_REQUEST_1663073.JSON"
+					}
+				]
+		},
+		{
+			...
+		}
+	]
+	</pre>
+	<H1>REST API: /byNameREST</H1>
+	<H3>Operation: GET</H3>
+	<H3>Sample Return JSON:</H3>
+	<p><b><i>Remark: Element 0 of this JSON structure contains the descriptions the various elements</i></b></p>
+	<pre class="brush:js" style="font-size:+1">
+	[
+		{
+			"voName":"ViewObject Name",
+			"detailsLine":
+				[
+					{
+						"runDate":"Run Date",
+						"status":"Status",
+						"numberOfRows":"Number of Rows",
+						"extractDuration":"Extract Duration In Sec",
+						"uploadDuration":"Upload Duration In Sec",
+						"totalDuration":"Total Duration In Sec",
+						"queryDuration":"Query Duration In Sec",
+						"fileName":"File Name"
+					}
+				]
+		},
+		{
+			"voName":"FscmTopModelAM.EgpItemsPublicModelAM.CompetitorProduct",
+			"detailsLine":
+				[
+					{
+						"runDate":"2020-07-13T10:01:06.630Z",
+						"status":"SUCCESS",
+						"numberOfRows":3467,
+						"extractDuration":0,
+						"uploadDuration":0,
+						"totalDuration":30,
+						"queryDuration":0,
+						"fileName":"EXTRACT_STATUS_DATA_SCHEDULE_1663072_REQUEST_1663073.JSON"
+					},
+					{
+						"runDate":"2020-07-13T10:13:00.888Z",
+						"status":"SUCCESS",
+						"numberOfRows":0,
+						"extractDuration":0,
+						"uploadDuration":0,
+						"totalDuration":40,
+						"queryDuration":14,
+						"fileName":"EXTRACT_STATUS_PRIMARY_KEYS_SCHEDULE_1663072_REQUEST_1663073.JSON"
+					},
+					{
+						...
+					}
+				]
+		},
+		{
+			...
+		}
+	]
+	</pre>
+	<H1>REST API: /bySchedIDREST</H1>
+	<H3>Operation: GET</H3>
+	<H3>Sample Return JSON:</H3>
+	<p><b><i>Remark: Element 0 of this JSON structure contains the descriptions the various elements</i></b></p>
+	<pre class="brush:js" style="font-size:+1">
+	[
+		{
+			"voSchedID":"Schedule ID",
+			"reqIDList":
+				[
+					{
+						"reqID":"Request ID",
+						"detailsLine":
+							[
+								{
+									"voName":"View Object Name",
+									"runDate":"Timestamp",
+									"status":"Status",
+									"numberOfRows":"Number of Rows",
+									"extractDuration":"Extract Duration In Sec",
+									"uploadDuration":"Upload Duration In Sec",
+									"totalDuration":"Total Duration In Sec",
+									"queryDuration":"Query Duration In Sec",
+									"fileName":"File Name"
+								}
+							]
+					}
+				]
+		},
+		{
+			"voSchedID":"1663072",
+			"reqIDList":
+				[
+					{
+						"reqID":"1663073",
+						"detailsLine":
+							[
+								{
+									"voName":"FscmTopModelAM.EgpItemsPublicModelAM.CompetitorProduct",
+									"runDate":"2020-07-13T10:01:06.630Z",
+									"status":"SUCCESS",
+									"numberOfRows":0,
+									"extractDuration":0,
+									"uploadDuration":0,
+									"totalDuration":30,
+									"queryDuration":0,
+									"fileName":"EXTRACT_STATUS_DATA_SCHEDULE_1663072_REQUEST_1663073.JSON"
+								},
+								{
+									"voName":"FscmTopModelAM.EgpItemsPublicModelAM.CustomerItem",
+									"runDate":"2020-07-13T10:01:17.323Z",
+									"status":"SUCCESS",
+									"numberOfRows":18,
+									"extractDuration":0,
+									"uploadDuration":0,
+									"totalDuration":13,
+									"queryDuration":2,
+									"fileName":"EXTRACT_STATUS_DATA_SCHEDULE_1663072_REQUEST_1663073.JSON"
+								},
+								{
+									"voName":"FscmTopModelAM.EgpItemsPublicModelAM.InventoryItemRef",
+									"runDate":"2020-07-13T10:00:26.976Z",
+									"status":"SUCCESS",
+									"numberOfRows":6488,
+									"extractDuration":2,
+									"uploadDuration":0,
+									"totalDuration":24,
+									"queryDuration":9,
+									"fileName":"EXTRACT_STATUS_DATA_SCHEDULE_1663072_REQUEST_1663073.JSON"
+								},
+								{
+									...
+								}
+							]
+					},
+					{
+						...
+					}
+				]
+		},
+		{
+			...
+		}
+	]
+	</pre>
+	<H1>REST API: /byFailStatusVOREST</H1>
+	<H3>Operation: GET</H3>
+	<H3>Sample Return JSON:</H3>
+	<p><b><i>Remark: Element 0 of this JSON structure contains the descriptions the various elements</i></b></p>
+	<pre class="brush:js" style="font-size:+1">
+	[
+		{
+			"voName":"ViewObject Name",
+			"detailsLine":
+				[
+					{
+						"runDate":"Run Date",
+						"status":"Status",
+						"errMsg":"Error Message",
+						"numberOfRows":"Number of Rows",
+						"extractDuration":"Extract Duration In Sec",
+						"uploadDuration":"Upload Duration In Sec",
+						"totalDuration":"Total Duration In Sec",
+						"queryDuration":"Query Duration In Sec",
+						"fileName":"File Name"
+					}
+				]
+		},
+		{
+			"voName":FscmTopModelAM.EgpItemsPublicModelAM.Item"
+			"detailsLine":
+				[
+					{
+						"runDate":"2019-02-08T19:01:04.981Z",
+						"status":"FAILURE",
+						"errMsg":"oracle.obiacm.dataExtract.DataExtractException: Error executing query\n\tat oracle.obiacm.queryprocessing.BIServerQuery.runQuery(BIServerQuery.java:1445)\n\tat oracle.obiacm.queryprocessing.BIServerQuery.runQuery(BIServerQuery.java:1399)\n\tat oracle.obiacm.queryprocessing.BIServerQuery.runDataExtractQuery(BIServerQuery.java:430)\n\tat oracle.obiacm.dataExtract.BIVOExtractTask.doNormalExtract(BIVOExtractTask.java:195)\n\tat oracle.obiacm.dataExtract.BIVOExtractTask.doDataExtract(BIVOExtractTask.java:109)\n\tat oracle.obiacm.dataExtract.BIVOExtractTask.doRun(BIVOExtractTask.java:93)\n\tat oracle.obiacm.dataExtract.AbstractCancellableTask.run(AbstractCancellableTask.java:37)\n\tat weblogic.work.j2ee.J2EEWorkManager$WorkWithListener.run(J2EEWorkManager.java:184)\n\tat weblogic.work.ExecuteThread.execute(ExecuteThread.java:378)\n\tat weblogic.work.ExecuteThread.run(ExecuteThread.java:307)\nCaused by: java.sql.SQLException: java.io.IOException: execute query failed[nQSError: 43113] Message returned from OBIS.\n[nQSError: 43119] Query Failed: \n[nQSError: 17001] Oracle Error code: 1652, message: ORA-01652: unable to extend temp segment by 128 in tablespace FUSION_TEMP\n at OCI call OCIStmtFetch.\n[nQSError: 17012] Bulk fetch failed.\n\tat oracle.bi.jdbc.AnaJdbcStatementImpl.executeQuery(AnaJdbcStatementImpl.java:387)\n\tat oracle.obiacm.queryprocessing.BIServerQuery.runQuery(BIServerQuery.java:1428)\n\t... 9 more\n",
+						"numberOfRows":"0",
+						"extractDuration":"0",
+						"uploadDuration":"0",
+						"totalDuration":"5135",
+						"queryDuration":"0",
+						"fileName":"EXTRACT_STATUS/EXTRACT_STATUS_DATA_SCHEDULE_1492290_REQUEST_1492290.JSON"
+					},
+					{
+						...
+					}
+				]
+		},
+		{
+			...
+		}
+	]
+	</pre>
+	<H1>REST API: /byFailStatusDateREST</H1>
+	<H3>Operation: GET</H3>
+	<H3>Sample Return JSON:</H3>
+	<p><b><i>Remark: Element 0 of this JSON structure contains the descriptions the various elements</i></b></p>
+	<pre class="brush:js" style="font-size:+1">
+	[
+		{
+			"voRunDate":"Run Date",
+			"detailsLine":
+				[
+					{
+						"voName":"View Object Name",
+						"errMsg":"Error Message",
+						"status":"Status",
+						"runDate":"Run Date",
+						"numberOfRows":"Number of Rows",
+						"extractDuration":"Extract Duration In Sec",
+						"uploadDuration":"Upload Duration In Sec",
+						"totalDuration":"Total Duration In Sec",
+						"queryDuration":"Query Duration In Sec",
+						"fileName":"File Name"
+					}
+				]
+		},
+		{
+			"voRunDate":"2019-02-08T19:01:04.981Z",
+			"detailsLine":
+				[
+					{
+						"voName":FscmTopModelAM.EgpItemsPublicModelAM.Item"
+						"errMsg":"oracle.obiacm.dataExtract.DataExtractException: Error executing query\n\tat oracle.obiacm.queryprocessing.BIServerQuery.runQuery(BIServerQuery.java:1445)\n\tat oracle.obiacm.queryprocessing.BIServerQuery.runQuery(BIServerQuery.java:1399)\n\tat oracle.obiacm.queryprocessing.BIServerQuery.runDataExtractQuery(BIServerQuery.java:430)\n\tat oracle.obiacm.dataExtract.BIVOExtractTask.doNormalExtract(BIVOExtractTask.java:195)\n\tat oracle.obiacm.dataExtract.BIVOExtractTask.doDataExtract(BIVOExtractTask.java:109)\n\tat oracle.obiacm.dataExtract.BIVOExtractTask.doRun(BIVOExtractTask.java:93)\n\tat oracle.obiacm.dataExtract.AbstractCancellableTask.run(AbstractCancellableTask.java:37)\n\tat weblogic.work.j2ee.J2EEWorkManager$WorkWithListener.run(J2EEWorkManager.java:184)\n\tat weblogic.work.ExecuteThread.execute(ExecuteThread.java:378)\n\tat weblogic.work.ExecuteThread.run(ExecuteThread.java:307)\nCaused by: java.sql.SQLException: java.io.IOException: execute query failed[nQSError: 43113] Message returned from OBIS.\n[nQSError: 43119] Query Failed: \n[nQSError: 17001] Oracle Error code: 1652, message: ORA-01652: unable to extend temp segment by 128 in tablespace FUSION_TEMP\n at OCI call OCIStmtFetch.\n[nQSError: 17012] Bulk fetch failed.\n\tat oracle.bi.jdbc.AnaJdbcStatementImpl.executeQuery(AnaJdbcStatementImpl.java:387)\n\tat oracle.obiacm.queryprocessing.BIServerQuery.runQuery(BIServerQuery.java:1428)\n\t... 9 more\n",
+						"status":"FAILURE",
+						"numberOfRows":"0",
+						"extractDuration":"0",
+						"uploadDuration":"0",
+						"totalDuration":"5135",
+						"queryDuration":"0",
+						"fileName":"EXTRACT_STATUS/EXTRACT_STATUS_DATA_SCHEDULE_1492290_REQUEST_1492290.JSON"
+					},
+					{
+						...
+					}
+				]
+		},
+		{
+			...
+		}
+
+	]
+	</pre>
+	<H1>REST API: /refreshDataREST</H1>
+	<H3>Operation: GET</H3>
+	<H3>Sample Return JSON:</H3>
+	<p><b><i>Remark: JSON message below will be returned in case no unexpected runtime error occurs
+	<pre class="brush:js" style="font-size:+1">
+	{
+		"status":"ok"
+	}
+	</pre>
+    </body>
+</html>

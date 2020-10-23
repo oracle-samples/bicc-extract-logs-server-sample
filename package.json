@@ -1,0 +1,27 @@
+{
+    "name": "BICCLogServer",
+    "version": "1.0.0",
+    "keywords": [
+        "util",
+        "functional",
+        "server",
+        "client",
+        "browser"
+    ],
+    "author": "ujanke",
+    "contributors": [],
+    "dependencies": {
+        "async": "^2.6.2",
+        "express": "^4.17.1",
+        "filereader": "^0.10.3",
+        "fs": "0.0.1-security",
+        "node-readfiles": "^0.2.0"
+    },
+    "scripts": {
+        "debug": "DEBUG=pd* nodemon --inspect-brk --harmony --nolazy server.js -e js,mustache,json,yaml"
+    },
+    "bundleDependencies": [
+        "fs",
+        "express"
+    ]
+}
