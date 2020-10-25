@@ -1,5 +1,5 @@
 {
-    "name": "BICCLogServer",
+    "name": "biccLogServer",
     "version": "1.0.0",
     "keywords": [
         "util",
@@ -8,14 +8,11 @@
         "client",
         "browser"
     ],
-    "author": "ujanke",
+    "author": "Ulrich Janke",
     "contributors": [],
     "dependencies": {
-        "async": "^2.6.2",
         "express": "^4.17.1",
-        "filereader": "^0.10.3",
-        "fs": "0.0.1-security",
-        "node-readfiles": "^0.2.0"
+        "fs": "0.0.1-security"
     },
     "scripts": {
         "debug": "DEBUG=pd* nodemon --inspect-brk --harmony --nolazy server.js -e js,mustache,json,yaml"
