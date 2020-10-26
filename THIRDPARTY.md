@@ -32,10 +32,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## @Node.js 12.19.0 is licensed for use as follows:
 
-
 Node.js is licensed for use as follows:
 
-"""
+```
 Copyright Node.js contributors. All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -55,12 +54,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
-"""
+```
 
 This license applies to parts of Node.js originating from the
 https://github.com/joyent/node repository:
 
-"""
+```
 Copyright Joyent, Inc. and other Node contributors. All rights reserved.
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
@@ -79,7 +78,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
-"""
+```
 
 The Node.js license applies to all parts of Node.js that are not externally
 maintained libraries.
@@ -87,7 +86,7 @@ maintained libraries.
 The externally maintained libraries used by Node.js are:
 
 - Acorn, located at deps/acorn, is licensed as follows:
-  """
+  ```
     Copyright (C) 2012-2018 by various contributors (see AUTHORS)
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -107,10 +106,10 @@ The externally maintained libraries used by Node.js are:
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
-  """
+  ```
 
 - Acorn plugins, located at deps/acorn-plugins, is licensed as follows:
-  """
+  ```
     Copyright (C) 2017-2018 by Adrian Heine
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -130,10 +129,10 @@ The externally maintained libraries used by Node.js are:
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
-  """
+  ```
 
 - c-ares, located at deps/cares, is licensed as follows:
-  """
+  ```
     Copyright (c) 2007 - 2018, Daniel Stenberg with many contributors, see AUTHORS
     file.
 
@@ -147,10 +146,10 @@ The externally maintained libraries used by Node.js are:
     distribution of the software without specific, written prior permission.
     M.I.T. makes no representations about the suitability of this software for any
     purpose.  It is provided "as is" without express or implied warranty.
-  """
+  ```
 
 - cjs-module-lexer, located at deps/cjs-module-lexer, is licensed as follows:
-  """
+  ```
     MIT License
     -----------
 
@@ -161,10 +160,10 @@ The externally maintained libraries used by Node.js are:
     The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  """
+  ```
 
 - ICU, located at deps/icu-small, is licensed as follows:
-  """
+  ```
     COPYRIGHT AND PERMISSION NOTICE (ICU 58 and later)
 
     Copyright © 1991-2020 Unicode, Inc. All rights reserved.
@@ -579,10 +578,10 @@ The externally maintained libraries used by Node.js are:
     THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  """
+  ```
 
 - libuv, located at deps/uv, is licensed as follows:
-  """
+  ```
     libuv is licensed for use as follows:
 
     ====
@@ -653,10 +652,10 @@ The externally maintained libraries used by Node.js are:
       - android-ifaddrs.h, android-ifaddrs.c, copyright Berkeley Software Design
         Inc, Kenneth MacKay and Emergya (Cloud4all, FP7/2007-2013, grant agreement
         n° 289016). Three clause BSD license.
-  """
+  ```
 
 - llhttp, located at deps/llhttp, is licensed as follows:
-  """
+  ```
     This software is licensed under the MIT License.
 
     Copyright Fedor Indutny, 2018.
@@ -679,10 +678,10 @@ The externally maintained libraries used by Node.js are:
     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
     OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
     USE OR OTHER DEALINGS IN THE SOFTWARE.
-  """
+  ```
 
 - OpenSSL, located at deps/openssl, is licensed as follows:
-  """
+  ```
     Copyright (c) 1998-2019 The OpenSSL Project.  All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
@@ -733,10 +732,10 @@ The externally maintained libraries used by Node.js are:
     This product includes cryptographic software written by Eric Young
     (eay@cryptsoft.com).  This product includes software written by Tim
     Hudson (tjh@cryptsoft.com).
-  """
+  ```
 
 - Punycode.js, located at lib/punycode.js, is licensed as follows:
-  """
+  ```
     Copyright Mathias Bynens <https://mathiasbynens.be/>
 
     Permission is hereby granted, free of charge, to any person obtaining
@@ -757,10 +756,10 @@ The externally maintained libraries used by Node.js are:
     LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
     OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
     WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  """
+  ```
 
 - V8, located at deps/v8, is licensed as follows:
-  """
+  ```
     This license applies to all parts of V8 that are not externally
     maintained libraries.  The externally maintained libraries used by V8
     are:
@@ -823,10 +822,10 @@ The externally maintained libraries used by Node.js are:
     THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  """
+  ```
 
 - SipHash, located at deps/v8/src/third_party/siphash, is licensed as follows:
-  """
+  ```
     SipHash reference C implementation
 
     Copyright (c) 2016 Jean-Philippe Aumasson <jeanphilippe.aumasson@gmail.com>
@@ -834,10 +833,10 @@ The externally maintained libraries used by Node.js are:
     To the extent possible under law, the author(s) have dedicated all
     copyright and related and neighboring rights to this software to the public
     domain worldwide. This software is distributed without any warranty.
-  """
+  ```
 
 - zlib, located at deps/zlib, is licensed as follows:
-  """
+  ```
     zlib.h -- interface of the 'zlib' general purpose compression library
     version 1.2.11, January 15th, 2017
 
@@ -861,10 +860,10 @@ The externally maintained libraries used by Node.js are:
 
     Jean-loup Gailly        Mark Adler
     jloup@gzip.org          madler@alumni.caltech.edu
-  """
+  ```
 
 - npm, located at deps/npm, is licensed as follows:
-  """
+  ```
     The npm application
     Copyright (c) npm, Inc. and Contributors
     Licensed on the terms of The Artistic License 2.0
@@ -1090,10 +1089,10 @@ The externally maintained libraries used by Node.js are:
     ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     --------
-  """
+  ```
 
 - GYP, located at tools/gyp, is licensed as follows:
-  """
+  ```
     Copyright (c) 2020 Node.js contributors. All rights reserved.
     Copyright (c) 2009 Google Inc. All rights reserved.
 
@@ -1122,10 +1121,10 @@ The externally maintained libraries used by Node.js are:
     THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  """
+  ```
 
 - inspector_protocol, located at tools/inspector_protocol, is licensed as follows:
-  """
+  ```
     // Copyright 2016 The Chromium Authors. All rights reserved.
     //
     // Redistribution and use in source and binary forms, with or without
@@ -1153,10 +1152,10 @@ The externally maintained libraries used by Node.js are:
     // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
     // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  """
+  ```
 
 - jinja2, located at tools/inspector_protocol/jinja2, is licensed as follows:
-  """
+  ```
     Copyright (c) 2009 by the Jinja Team, see AUTHORS for more details.
 
     Some rights reserved.
@@ -1188,10 +1187,10 @@ The externally maintained libraries used by Node.js are:
     THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  """
+  ```
 
 - markupsafe, located at tools/inspector_protocol/markupsafe, is licensed as follows:
-  """
+  ```
     Copyright (c) 2010 by Armin Ronacher and contributors.  See AUTHORS
     for more details.
 
@@ -1225,10 +1224,10 @@ The externally maintained libraries used by Node.js are:
     NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE AND DOCUMENTATION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
     DAMAGE.
-  """
+  ```
 
 - cpplint.py, located at tools/cpplint.py, is licensed as follows:
-  """
+  ```
     Copyright (c) 2009 Google Inc. All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
@@ -1256,10 +1255,10 @@ The externally maintained libraries used by Node.js are:
     THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  """
+  ```
 
 - ESLint, located at tools/node_modules/eslint, is licensed as follows:
-  """
+  ```
     Copyright JS Foundation and other contributors, https://js.foundation
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1279,10 +1278,10 @@ The externally maintained libraries used by Node.js are:
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
-  """
+  ```
 
 - babel-eslint, located at tools/node_modules/babel-eslint, is licensed as follows:
-  """
+  ```
     Copyright (c) 2014-2016 Sebastian McKenzie <sebmck@gmail.com>
 
     MIT License
@@ -1305,10 +1304,10 @@ The externally maintained libraries used by Node.js are:
     LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
     OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
     WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  """
+  ```
 
 - gtest, located at test/cctest/gtest, is licensed as follows:
-  """
+  ```
     Copyright 2008, Google Inc.
     All rights reserved.
 
@@ -1337,10 +1336,10 @@ The externally maintained libraries used by Node.js are:
     THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  """
+  ```
 
 - nghttp2, located at deps/nghttp2, is licensed as follows:
-  """
+  ```
     The MIT License
 
     Copyright (c) 2012, 2014, 2015, 2016 Tatsuhiro Tsujikawa
@@ -1364,10 +1363,10 @@ The externally maintained libraries used by Node.js are:
     LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
     OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
     WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  """
+  ```
 
 - ngtcp2, located at deps/ngtcp2, is licensed as follows:
-  """
+  ```
     The MIT License
 
     Copyright (c) 2016 ngtcp2 contributors
@@ -1390,10 +1389,10 @@ The externally maintained libraries used by Node.js are:
     LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
     OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
     WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  """
+  ```
 
 - nghttp3, located at deps/nghttp3, is licensed as follows:
-  """
+  ```
     The MIT License
 
     Copyright (c) 2019 nghttp3 contributors
@@ -1416,10 +1415,10 @@ The externally maintained libraries used by Node.js are:
     LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
     OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
     WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  """
+  ```
 
 - node-inspect, located at deps/node-inspect, is licensed as follows:
-  """
+  ```
     Copyright Node.js contributors. All rights reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1439,10 +1438,10 @@ The externally maintained libraries used by Node.js are:
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
     IN THE SOFTWARE.
-  """
+  ```
 
 - large_pages, located at src/large_pages, is licensed as follows:
-  """
+  ```
      Copyright (C) 2018 Intel Corporation
 
      Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1457,15 +1456,15 @@ The externally maintained libraries used by Node.js are:
 
      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
      OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
      THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
      OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
      ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
      OR OTHER DEALINGS IN THE SOFTWARE.
-  """
+  ```
 
 - caja, located at lib/internal/freeze_intrinsics.js, is licensed as follows:
-  """
+  ```
      Adapted from SES/Caja - Copyright (C) 2011 Google Inc.
      Copyright (C) 2018 Agoric
 
@@ -1480,10 +1479,10 @@ The externally maintained libraries used by Node.js are:
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
-  """
+  ```
 
 - brotli, located at deps/brotli, is licensed as follows:
-  """
+  ```
     Copyright (c) 2009, 2010, 2013-2016 by the Brotli Authors.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1503,10 +1502,10 @@ The externally maintained libraries used by Node.js are:
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
-  """
+  ```
 
 - HdrHistogram, located at deps/histogram, is licensed as follows:
-  """
+  ```
     The code in this repository code was Written by Gil Tene, Michael Barker,
     and Matt Warren, and released to the public domain, as explained at
     http://creativecommons.org/publicdomain/zero/1.0/
@@ -1548,10 +1547,10 @@ The externally maintained libraries used by Node.js are:
      CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
      ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
      THE POSSIBILITY OF SUCH DAMAGE.
-  """
+  ```
 
 - highlight.js, located at doc/api_assets/highlight.pack.js, is licensed as follows:
-  """
+  ```
     BSD 3-Clause License
 
     Copyright (c) 2006, Ivan Sagalaev.
@@ -1581,10 +1580,10 @@ The externally maintained libraries used by Node.js are:
     CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
     OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  """
+  ```
 
 - node-heapdump, located at src/heap_utils.cc, is licensed as follows:
-  """
+  ```
     ISC License
 
     Copyright (c) 2012, Ben Noordhuis <info@bnoordhuis.nl>
@@ -1618,10 +1617,10 @@ The externally maintained libraries used by Node.js are:
     WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
     ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-  """
+  ```
 
 - rimraf, located at lib/internal/fs/rimraf.js, is licensed as follows:
-  """
+  ```
     The ISC License
 
     Copyright (c) Isaac Z. Schlueter and Contributors
@@ -1637,10 +1636,10 @@ The externally maintained libraries used by Node.js are:
     WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
     ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
     IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-  """
+  ```
 
 - uvwasi, located at deps/uvwasi, is licensed as follows:
-  """
+  ```
     MIT License
 
     Copyright (c) 2019 Colin Ihrig and Contributors
@@ -1662,5 +1661,4 @@ The externally maintained libraries used by Node.js are:
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
-  """
-
+  ```
