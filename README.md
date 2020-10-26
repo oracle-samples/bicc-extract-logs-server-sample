@@ -15,6 +15,11 @@
 
 This application provides a sample how the EXTRACT JSON files for BICC extracts can be read, accumulated and published by various REST services for further processing and UI rendering. These JSON files are created during a BICC job execution and list the statistics for this run like used View Objects, timings, status information etc. 
 
+## High level architecture
+
+As shown in the figure below this code will read JSON files from a mounted network resource. These files will be parsed and accumulated in memory. Via an Express web server function there are multiple REST API's that provide dedicated views on these data. The content of this service can be refreshed by another REST API call that will re-read the directory and update the internal data structures. According to the asynchronous processing nature of Node.js these call make take some time depending on the volume of data to be handled.
+![](images/Solution_Architecture.png)
+
 ## Functional Overview
 
 It has been tested in an OCI environment where the BICC output has been written into an OCI Object Storage bucket. The Node.js code was running in a OCU Compute Cloud Linux instance. The OCI Storage bucket was shared as a S3FS share in filesystem on that OCI Linux machine. This way there is no specific download of these JSON files necessary and the program would read and evaluate always the actual files at runtime. Via a special REST service it is possible to reload these JSON files and it can be scheduled as a job from outside to ensure the users are always seeing the latest data.
@@ -123,7 +128,7 @@ If the refresh of log data is a demand it can achieved by running a command  lik
 
 ## Further Information
 
-For further information on how this solution works including details about this application is being embedded in a bigger picture you can find a more detailed architecture overview on A-Team Chronicles blog page: `http://www.ateam-oracle.com` 
+For further information on how this solution works including details about this application is being embedded in a bigger picture you can find a more detailed architecture overview on A-Team Chronicles blog page [A-Team Oracle](http://www.ateam-oracle.com) 
 
 Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
 Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
