@@ -31,7 +31,7 @@ This solution was developed in order to demonstrate the capabilities of reading 
 
 Possibly changed JSON structures in future releases were not available during writing this code. The code has made running and  been tested against Oracle SaaS BICC Release 20C.
 
-The application has been tested against the both GPL software versions as listed above. We might assume that it will even run with more recent releases, but that hasn't been tested before and is a task of adopters premise when using this solution.
+The application has been tested against the 3rd party software versions as listed above. We might assume that it will even run with more recent releases, but that hasn't been tested before and is a task of adopters premise when using this solution.
 
 
 ## Implementation Scenario covered 
@@ -130,5 +130,5 @@ If the refresh of log data is a demand it can achieved by running a command  lik
 
 For further information on how this solution works including details about this application is being embedded in a bigger picture you can find a more detailed architecture overview on A-Team Chronicles blog page [A-Team Oracle](http://www.ateam-oracle.com) 
 
-Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
+Copyright (c) 2020, Oracle and/or its affiliates. 
 Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
