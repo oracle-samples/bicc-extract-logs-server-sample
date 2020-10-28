@@ -306,7 +306,7 @@ extractStats.fillBatchJobArr = function(paramVOName, paramRunDate, paramStatus,
     
     var posSchedID = -1;
     var posReqID = -1;
-    for( v=0; v < this.voJobIDArr.length; v++){
+    for( var v=0; v < this.voJobIDArr.length; v++){
         if( this.voJobIDArr[v].voSchedID === scheduleID)
         {
             posSchedID = v;
@@ -818,7 +818,7 @@ let main = function (myArgs)
         for(var x = 3; x < myArgs.length; x++){
             var equalPos = myArgs[x].toString().indexOf("=", 0);
             var paramName, paramVal;
-        
+
         if(equalPos > 0)
         {
             paramName = myArgs[x].toString().substring(0, equalPos);
@@ -843,7 +843,7 @@ let main = function (myArgs)
                     extractStats.debugFlag = true;
                 }
             }
-            
+
             if(paramName === "host")
             {
                 hostName = paramVal.toString();
