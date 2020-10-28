@@ -1,4 +1,4 @@
-/*
+
 Copyright (c) [2020] ORACLE
 
 The Universal Permissive License (UPL), Version 1.0
@@ -499,7 +499,7 @@ extractStats.fillFailedArrays = function(paramVOName, paramRunDate, paramStatus,
         }
     }
 
-    for( v=0; v < this.voFailedArrByDate.length; v++){
+    for( var v=0; v < this.voFailedArrByDate.length; v++){
         if( this.voFailedArrByDate[v].voRunDate === runDateToSec)
         {
             posRDTSVal = v;
