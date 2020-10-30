@@ -51,7 +51,7 @@ After processing these JSON files a REST server will be started via Express.js w
 * if not specified differently by a parameter the listing IP address is *127.0.0.1*
 * if not specified differently by a paramter there is **no** log output
 * if the given directory is not accessible or can't be read the program execution will be stopped with an according status message
-* if no specififc REST API is given - means just opening the URL in a browser as is - a static *index.html* will be opened and shown providing a documentation about the available services
+* if no specific REST API is given - means just opening the URL in a browser as is - a static *index.html* will be opened and shown providing a documentation about the available services
 * if no suitable JSON files exist, but might be produced at a later time, the REST API */refreshDataREST* can be used to reread the directory and to rebuild the internal structures
 * the *refreshDataREST* call can be executed at any time or also scheduled to ensure the latest files will be processed
 * none of the REST API's requires a parameter and all are called by using a GET method
@@ -128,7 +128,7 @@ If the refresh of log data is a demand it can achieved by running a command  lik
 
 ## Further Information
 
-For further information on how this solution works including details about this application is being embedded in a bigger picture you can find a more detailed architecture overview on A-Team Chronicles blog page [A-Team Oracle](http://www.ateam-oracle.com) 
+For further information on how this solution works including details about this application is being embedded in a bigger picture, you can find a more detailed architecture overview on the A-Team Chronicles blog page [A-Team Oracle](https://www.ateam-oracle.com/bicc-extract-logs-monitoring-on-oci-native) 
 
 Copyright (c) 2020, Oracle and/or its affiliates. 
 Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
