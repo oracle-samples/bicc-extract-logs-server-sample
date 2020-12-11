@@ -38,11 +38,13 @@ const fs = require('fs');
 const express = require('express');
 const app = express();
 const serveStatic = require('serve-static');
+const path = require('path');
 
 var extractStats = new Object();
 extractStats.voArr = new Array();
 extractStats.filePath = "";
 extractStats.debugFlag = false;
+extractStats.fileReadStatus = {status: "OK", message: ""};
 
 extractStats.voNameArr = new Array(
         {
@@ -134,38 +136,99 @@ extractStats.reportStats = new Array(
             "voListArr": [{voName: "Processed VO List"}]
     });
 
-extractStats.statusSuccess = "SUCCESS";
-
 extractStats.handleData = function(recVal, arrCounter, fileName)
 {
-        var numEntries = recVal.statuses.length;
-        var voSubArr = new Array();
+    var numEntries = recVal.statuses.length;
+    var voSubArr = new Array();
         
-        for(var fileLine = 0; fileLine < numEntries; fileLine++ ) 
+    for(var fileLine = 0; fileLine < numEntries; fileLine++ ) {
+        var myRec = recVal.statuses[fileLine];
+        var nameVal = myRec.name;
+        var statusVal = myRec.status;
+        var errorMessage = myRec.errorMessage;
+        var rowCountVal = myRec.rowCount;
+        var runDateVal = myRec.runDate;
+        var queryDurationInSecVal = myRec.queryDurationInSec;
+        var extractDurationInSecVal = myRec.extractDurationInSec;
+        var uploadDurationInSecVal = myRec.uploadDurationInSec;
+        var totalDurationInSecVal = myRec.totalDurationInSec;
+            
+        voSubArr[fileLine] = [nameVal, runDateVal, statusVal, rowCountVal, extractDurationInSecVal,
+        uploadDurationInSecVal, totalDurationInSecVal, queryDurationInSecVal, fileName];
+            
+        if (statusVal !== this.statusSuccess)
         {
-            var myRec = recVal.statuses[fileLine];
-            var nameVal = myRec.name;
-            var statusVal = myRec.status;
-            var errorMessage = myRec.errorMessage;
-            var rowCountVal = myRec.rowCount;
-            var runDateVal = myRec.runDate;
-            var queryDurationInSecVal = myRec.queryDurationInSec;
-            var extractDurationInSecVal = myRec.extractDurationInSec;
-            var uploadDurationInSecVal = myRec.uploadDurationInSec;
-            var totalDurationInSecVal = myRec.totalDurationInSec;
-            
-            voSubArr[fileLine] = [nameVal, runDateVal, statusVal, rowCountVal, extractDurationInSecVal,
-                uploadDurationInSecVal, totalDurationInSecVal, queryDurationInSecVal, fileName];
-            
-            if (statusVal !== this.statusSuccess)
-            {
-                this.fillFailedArrays(nameVal, runDateVal, statusVal, errorMessage, rowCountVal, extractDurationInSecVal,
-                    uploadDurationInSecVal, totalDurationInSecVal, queryDurationInSecVal, fileName);
-            }
+            this.fillFailedArrays(nameVal, runDateVal, statusVal, errorMessage, rowCountVal, extractDurationInSecVal,
+                uploadDurationInSecVal, totalDurationInSecVal, queryDurationInSecVal, fileName);
         }
-        this.voArr[arrCounter] = voSubArr.sort();
-        this.voArr.sort();
+    }
     
+    this.voArr[arrCounter] = voSubArr.sort();
+    this.voArr.sort();
+        
+    return;
+};
+
+extractStats.clearArrays = function()
+{
+    if( extractStats.debugFlag) {
+        console.log("clearArray() details - before clearing ...");
+        console.log("   extractStats.voArr.length = " + extractStats.voArr.length);
+        console.log("   extractStats.voNameArr.length = " + extractStats.voNameArr.length);
+        console.log("   extractStats.voRunDateArr.length = " + extractStats.voRunDateArr.length);
+        console.log("   extractStats.voFailedArrByDate.length = " + extractStats.voFailedArrByDate.length);
+        console.log("   extractStats.voFailedArrByVO.length = " + extractStats.voFailedArrByVO.length);
+        console.log("   extractStats.voJobIDArr.length = " + extractStats.voJobIDArr.length);
+        console.log("   extractStats.reportStats.length = " + extractStats.reportStats.length);
+    }
+    
+    if(extractStats.voArr.length > 0){
+        extractStats.voArr.splice(0, extractStats.voArr.length);
+        extractStats.voArr.length = 0;
+    }
+
+    if(extractStats.voNameArr.length > 0){
+        extractStats.voNameArr.splice(1, extractStats.voNameArr.length);
+        extractStats.voNameArr.length = 1;
+    }
+    
+    if(extractStats.voRunDateArr.length > 0){
+        extractStats.voRunDateArr.splice(1, extractStats.voRunDateArr.length);
+        extractStats.voRunDateArr.length = 1;
+    }
+
+    if(extractStats.voFailedArrByDate.length > 0){
+        extractStats.voFailedArrByDate.splice(1, extractStats.voFailedArrByDate.length);
+        extractStats.voFailedArrByDate.length = 1;
+    }
+
+    if(extractStats.voFailedArrByVO.length > 0){
+        extractStats.voFailedArrByVO.splice(1, extractStats.voFailedArrByVO.length);
+        extractStats.voFailedArrByVO.length = 1;
+    }
+
+    if(extractStats.voJobIDArr.length > 0){
+        extractStats.voJobIDArr.splice(1, extractStats.voJobIDArr.length);
+        extractStats.voJobIDArr.length = 1;
+    }
+
+    if(extractStats.reportStats.length > 0){
+        extractStats.reportStats.splice(1, extractStats.reportStats.length);
+        extractStats.reportStats.length = 1;
+    }
+ 
+    if( extractStats.debugFlag) {
+        console.log("clearArray() details - after clearing ...");
+        console.log("   extractStats.voArr.length = " + extractStats.voArr.length);
+        console.log("   extractStats.voNameArr.length = " + extractStats.voNameArr.length);
+        console.log("   extractStats.voRunDateArr.length = " + extractStats.voRunDateArr.length);
+        console.log("   extractStats.voFailedArrByDate.length = " + extractStats.voFailedArrByDate.length);
+        console.log("   extractStats.voFailedArrByVO.length = " + extractStats.voFailedArrByVO.length);
+        console.log("   extractStats.voJobIDArr.length = " + extractStats.voJobIDArr.length);
+        console.log("   extractStats.reportStats.length = " + extractStats.reportStats.length);
+    }
+    
+    return;
 };
 
 extractStats.createArrays = function()
@@ -205,6 +268,8 @@ extractStats.createArrays = function()
         }
         i = i + 1;
     }
+    
+    return;
 };
 
 extractStats.getScheduleID = function(fileName)
@@ -215,7 +280,6 @@ extractStats.getScheduleID = function(fileName)
     var posScheduleEnd = fileName.toString().indexOf(delimiter, posScheduleStart);
 
     return(fileName.toString().substring(posScheduleStart, posScheduleEnd));
-
 };
 
 extractStats.getRequestID = function(fileName)
@@ -260,6 +324,8 @@ extractStats.fillVONameArr = function(paramVOName, paramRunDate, paramStatus,
             extractDuration : paramExtractDuration, uploadDuration : paramUploadDuration, totalDuration : paramTotalDuration, 
             queryDuration : paramQueryDuration, fileName : paramFileName}];
     }
+    
+    return;
 }; 
 
 extractStats.fillRunDateArr = function(paramVOName, paramRunDate, paramStatus,
@@ -295,6 +361,8 @@ extractStats.fillRunDateArr = function(paramVOName, paramRunDate, paramStatus,
             extractDuration : paramExtractDuration, uploadDuration : paramUploadDuration, totalDuration : paramTotalDuration, 
             queryDuration : paramQueryDuration, fileName : paramFileName}];
     }
+    
+    return;
 };
 
 extractStats.fillBatchJobArr = function(paramVOName, paramRunDate, paramStatus,
@@ -357,6 +425,8 @@ extractStats.fillBatchJobArr = function(paramVOName, paramRunDate, paramStatus,
             extractDuration : paramExtractDuration, uploadDuration : paramUploadDuration, totalDuration : paramTotalDuration, 
             queryDuration : paramQueryDuration, fileName : paramFileName}];
     }
+    
+    return;
 };
     
 extractStats.fillReportStatsArr = function(paramVOName, paramRunDate, paramStatus,
@@ -480,6 +550,8 @@ extractStats.fillReportStatsArr = function(paramVOName, paramRunDate, paramStatu
             this.reportStats[1].requestIDArr.push({requestID : localRequestID});
 	}
     }
+    
+    return;
 };
 
 
@@ -549,6 +621,8 @@ extractStats.fillFailedArrays = function(paramVOName, paramRunDate, paramStatus,
 		    totalDuration : paramTotalDuration, 
                     queryDuration : paramQueryDuration, fileName : paramFileName}];
     }
+    
+    return;
 };
 
 extractStats.logData = function()
@@ -692,6 +766,8 @@ extractStats.logData = function()
     });
      
     console.log("------  End of Logging ---------");
+    
+    return;
 };
 
 extractStats.runRESTServer  = function(appPort, host)
@@ -729,7 +805,8 @@ extractStats.runRESTServer  = function(appPort, host)
     app.get('/refreshDataREST', function (req, res)
     {
         res.type('application/json');
-        res.send(JSON.stringify(extractStats.refreshData()).toString());
+        extractStats.refreshData();
+        res.send(JSON.stringify(extractStats.fileReadStatus).toString());
     });
     
      app.get('/bySchedIDREST', function (req, res)
@@ -741,58 +818,90 @@ extractStats.runRESTServer  = function(appPort, host)
     app.use(serveStatic('public', { 'index': ['index.html'] }));
     console.log("Started REST Server at host " + host + " and port " + appPort);
     app.listen(appPort, host);
+    
+    return;
 };
 
 extractStats.refreshData = function()
 {
-    return (extractStats.checkBiccLogs() ? "{status : OK}" : "{status : ERROR}");
+    if( extractStats.checkLogDirAccessible(extractStats.filePath) )
+    {
+        extractStats.checkBiccLogs();      
+    }
+    else {
+        extractStats.clearArrays();
+        extractStats.fileReadStatus.status = "ERROR";
+        extractStats.fileReadStatus.message = "Directory " + extractStats.filePath + " not accessible!"; 
+    }
+     
+    return;
 };
 
 extractStats.checkBiccLogs = function()
 {
     var arrNum = 0;
     var jsonInput = new Array();
-    
-    if( this.voArr.length > 0 ) {
-            this.voArr.splice(0, this.voArr.length);
-    }
+    extractStats.refreshStatus = "{ status: OK }";
+    extractStats.clearArrays();  
+   
+    var files = fs.readdirSync(extractStats.filePath);
 
-    fs.readdir(extractStats.filePath, function (err, files) {
-        files.forEach(function (file) {
-            if(file.toString().indexOf(".JSON") >= 1) {
-                jsonInput.length =  arrNum + 1;
-                var fullFileName = extractStats.filePath.toString() + "/" + file.toString();
-                jsonInput[arrNum] = JSON.parse(fs.readFileSync(fullFileName, 'utf8'));
-                var recVal = jsonInput[arrNum];
-                extractStats.handleData(recVal, arrNum, file.toString());
-                arrNum++;
-            }
-        });
-        
-    	extractStats.createArrays();
-        
-    	if(extractStats.debugFlag) {
-		extractStats.logData();
-    	}
-    });
+    files.forEach(function (file) {
+        if(file.endsWith(".JSON")) {
+            jsonInput.length =  arrNum + 1;
+            var fullFileName = extractStats.filePath.toString() + "/" + file.toString();
+            jsonInput[arrNum] = JSON.parse(fs.readFileSync(fullFileName, 'utf8'));
+            var recVal = jsonInput[arrNum];
+            extractStats.handleData(recVal, arrNum, file.toString());
+            arrNum++;
+        }
+     });
+    
+    if( arrNum === 0) {
+        extractStats.fileReadStatus.status = "ERROR";
+        extractStats.fileReadStatus.message = "No JSON files found!";      
+    }
+    else {
+        extractStats.fileReadStatus.status = "OK";
+        extractStats.fileReadStatus.message = arrNum + " JSON files found and processed";      
+        extractStats.createArrays();
+       
+        if(extractStats.debugFlag) {
+            extractStats.logData();
+        }
+    }
+    
+    return;
 };
 
-extractStats.checkLogDirExist = function(path)
+extractStats.checkLogDirAccessible = function(path)
 {
-    try {
-        if (fs.existsSync(path)) {
-            return(true);
-        }
-        else {
-            console.error('Unable to scan directory' + ' ' + path);
-            return(false);
-        }
-    }
+    var retVal = new Boolean(true);
     
-    catch(err) {
-        console.error(err);
-        return(false);
+    if (fs.existsSync(path)) {
+        try {
+            fs.accessSync(path, fs.constants.R_OK);
+            retVal = true;
+        } 
+        catch (err) {
+            retVal = false;
+        }        
     }
+    else {
+        retVal = false;
+    }
+        
+    return(retVal);
+};
+
+let usagePrint = function (arg1, arg2){
+        console.log( "Usage: " + arg1 + " " + arg2 + " <dir> [port=<1024...65554>] [log=<y|Y>] [host=<server>]");
+        console.log( "  <dir>           -> <Directory containing EXTRACT JSON Log Files>");
+        console.log( "  [port=<value>]  -> web listening port - default value = 3000 [optional parameter]");
+        console.log( "  [log=<y|Y>]     -> console log y|Y - default value = no [optional parameter]");
+        console.log( "  [host=<server>] -> host name or IP addr REST server will listen - default 127.0.0.1 [optional parameter]");
+        
+        return;
 };
 
 let main = function (myArgs)
@@ -800,60 +909,55 @@ let main = function (myArgs)
     var appPort = 3000;
     var hostName = "127.0.0.1";
    
-    if (myArgs.length < 3)
-    {
+    if (myArgs.length < 3) {
         console.log("Error: insufficient number of arguments!");
-        console.log( "Usage: " + myArgs[0] + " " + myArgs[1] + " <dir> [port=<1024...65554>] [log=<y|Y>] [host=<server>]");
-        console.log( "  <dir>           -> <Directory containing EXTRACT JSON Log Files>");
-        console.log( "  [port=<value>]  -> web listening port - default value = 3000 [optional parameter]");
-        console.log( "  [log=<y|Y>]     -> console log y|Y - default value = no [optional parameter]");
-        console.log( "  [host=<server>] -> host name or IP addr REST server will listen - default 127.0.0.1 [optional parameter]");
-        process.exit();
+        usagePrint(myArgs[0], myArgs[1]);
+        process.exit(1);
     }
             
-    if( extractStats.checkLogDirExist(myArgs[2]) )
-    {
+    if( extractStats.checkLogDirAccessible(myArgs[2]) ) {
         extractStats.filePath = myArgs[2];
         
         for(var x = 3; x < myArgs.length; x++){
             var equalPos = myArgs[x].toString().indexOf("=", 0);
             var paramName, paramVal;
 
-        if(equalPos > 0)
-        {
-            paramName = myArgs[x].toString().substring(0, equalPos);
-            paramVal = myArgs[x].toString().substring(equalPos + 1, myArgs[x].toString().length);
+            if(equalPos > 0) {
+                paramName = myArgs[x].toString().substring(0, equalPos);
+                paramVal = myArgs[x].toString().substring(equalPos + 1, myArgs[x].toString().length);
 
-            if (paramName === "port")
-            {
-                if (paramVal.match(/^[0-9]+$/) !== null )
-                {
-                    if( (paramVal < 1000) || (paramVal > 65554) ) {
-                        console.log("Hint: parameter <port> has an invalid value=" + paramVal + " - using default value 3000 instead!");
-                    }
-                    else {
-                        appPort = paramVal;
+                if (paramName === "port") {
+                    if (paramVal.match(/^[0-9]+$/) !== null )
+                    {
+                        if( (paramVal < 1000) || (paramVal > 65554) ) {
+                            console.log("Hint: parameter <port> has an invalid value=" + paramVal + " - using default value 3000 instead!");
+                        }
+                        else {
+                            appPort = paramVal;
+                        }
                     }
                 }
-            }
 
-            if(paramName === "log")
-            {
-                if(paramVal.toString().toUpperCase() === 'Y') {
-                    extractStats.debugFlag = true;
+                if(paramName === "log") {
+                    if(paramVal.toString().toUpperCase() === 'Y') {
+                        extractStats.debugFlag = true;
+                    }
                 }
-            }
 
-            if(paramName === "host")
-            {
-                hostName = paramVal.toString();
-            }
+                if(paramName === "host") {
+                    hostName = paramVal.toString();
+                }
             }
         }
-
-        extractStats.checkBiccLogs();
-	extractStats.runRESTServer(appPort, hostName);
     }
+    else {
+            console.log("Error: Directory " + myArgs[2] + " doesn't exist or is not accessible!");
+            usagePrint(myArgs[0], myArgs[1]);
+            process.exit(1);            
+    }
+
+    extractStats.checkBiccLogs();
+    extractStats.runRESTServer(appPort, hostName);
 };
 
 main(process.argv);

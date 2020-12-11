@@ -8,7 +8,7 @@
 
 ## Third Party Software Used
 
-* Node.js LTS 12.19
+* Node.js LTS 14.15.1
 * Express.js 4.17.1
 
 ## Introduction
