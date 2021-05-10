@@ -24,8 +24,11 @@ As shown in the figure below this code will read JSON files from a mounted netwo
 
 It has been tested in an OCI environment where the BICC output has been written into an OCI Object Storage bucket. The Node.js code was running in a OCU Compute Cloud Linux instance. The OCI Storage bucket was shared as a network filesystem on the OCI Linux machine. This way there is no specific download of these JSON files necessary and the program would read and evaluate always the actual files at runtime. Via a special REST service **/refreshDataREST** it is possible to reload these JSON files. Such an API call can be scheduled as a job or run from anywhere to ensure the consumers are always retrieving actual data.
 As the program takes only one mandatory paramater - the directory name containing the JSON files - this program would work with any BICC EXTRACT JSON files independently of being existent on an OCI Object Storage or locally.
+This solution was developed in order to demonstrate the capabilities of reading the EXTRACT JSON files and consolidation of those data. The results are existing as JSON Array Structures inside the code and will be published via various REST API's. 
 
-## Disclaimer
+## Installation
+
+
 
 This solution was developed in order to demonstrate the capabilities of reading the EXTRACT JSON files and consolidation of those data. The results are existing as JSON Array Structures inside the code and will be published via various REST API's. To strictly focus on these features and to avoid also an unnecessary voluminous code we have waived to provide any security specific routines like access management to call these API's inside the code. Securing these REST services in an OCI environment will work best by installing the Node.js application on a private OCI Compute Instance. Once done these REST service can be published and secured via Oracle API Gateway and Oracle IDCS. Detailed explanations are available via this  [A-Team Chronicles Blog](https://www.ateam-oracle.com/bicc-securing-extract-logs-rest-services).
 
@@ -102,7 +105,7 @@ The code repository contains two sub-directories holding the ICS exports and Jav
 | **package.json**       | this package configuration 
 
 
-## Running the integration
+## Running the sample code
 
 The application provided here can be tested as is by using the provided test data. The following tasks are required
 
