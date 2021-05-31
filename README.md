@@ -2,7 +2,7 @@
 
 ## Products Involved
 
-* Oracle SaaS 20.B
+* Oracle SaaS 20.B or higher
 * Oracle Cloud Infrastructure 19.4.x (optional)
 * Oracle Visual Builder Service 19.4.x (optional)
 
@@ -17,25 +17,30 @@ This application provides a sample how the EXTRACT JSON files for BICC extracts 
 
 ## High level architecture
 
-As shown in the figure below this code will read JSON files from a mounted network resource. These files will be parsed and accumulated in memory. Via an Express web server function there are multiple REST API's that provide dedicated views on these data. The content of this service can be refreshed by another REST API call that will re-read the directory and update the internal data structures. According to the asynchronous processing nature of Node.js these call make take some time depending on the volume of data to be handled.
+As shown in the figure below this code will read JSON files from a mounted network resource. These files will be parsed and accumulated in memory. Via an Express web server function there are multiple REST API's that provide dedicated views on these data. The content of this service can be refreshed by another REST API call that will re-read the directory and update the internal data structures. According to the asynchronous processing nature of *Node.js* this call may take some time depending on the volume of data to be handled.
 ![](images/Solution_Architecture.png)
-
-## Functional Overview
-
-It has been tested in an OCI environment where the BICC output has been written into an OCI Object Storage bucket. The Node.js code was running in a OCU Compute Cloud Linux instance. The OCI Storage bucket was shared as a network filesystem on the OCI Linux machine. This way there is no specific download of these JSON files necessary and the program would read and evaluate always the actual files at runtime. Via a special REST service **/refreshDataREST** it is possible to reload these JSON files. Such an API call can be scheduled as a job or run from anywhere to ensure the consumers are always retrieving actual data.
-As the program takes only one mandatory paramater - the directory name containing the JSON files - this program would work with any BICC EXTRACT JSON files independently of being existent on an OCI Object Storage or locally.
-This solution was developed in order to demonstrate the capabilities of reading the EXTRACT JSON files and consolidation of those data. The results are existing as JSON Array Structures inside the code and will be published via various REST API's. 
-
-## Installation
-
-
-
-This solution was developed in order to demonstrate the capabilities of reading the EXTRACT JSON files and consolidation of those data. The results are existing as JSON Array Structures inside the code and will be published via various REST API's. To strictly focus on these features and to avoid also an unnecessary voluminous code we have waived to provide any security specific routines like access management to call these API's inside the code. Securing these REST services in an OCI environment will work best by installing the Node.js application on a private OCI Compute Instance. Once done these REST service can be published and secured via Oracle API Gateway and Oracle IDCS. Detailed explanations are available via this  [A-Team Chronicles Blog](https://www.ateam-oracle.com/bicc-securing-extract-logs-rest-services).
+This solution was developed in order to demonstrate the capabilities of reading the EXTRACT JSON files produced by BICC and the consolidated review of those data. The results are existing as JSON Array Structures internally and will be accessible via various REST API's.  
 
 Possibly changed JSON structures in future releases were not available during writing this code. The code has made running and  been tested against Oracle SaaS BICC Release 20C.
 
 The application has been tested against the 3rd party software versions as listed above. We might assume that it will even run with more recent releases, but that hasn't been tested before and is a task of adopters premise when using this solution.
 
+## Functional Overview
+
+It has been tested in an OCI environment where the BICC output has been written into an OCI Object Storage bucket. The *Node.js* code was running in a OCU Compute Cloud Linux instance. The OCI Storage bucket was shared as a network filesystem on the OCI Linux machine. This way there is no specific download of these JSON files necessary and the program would read and evaluate always the actual files at runtime. Via a special REST service **/refreshDataREST** it is possible to reload these JSON files. Such an API call can be scheduled as a job or run from anywhere to ensure the consumers are always retrieving actual data.
+As the program takes only one mandatory paramater - the directory name containing the JSON files - this program would work with any BICC EXTRACT JSON files independently of being existent on an OCI Object Storage or locally.
+This solution was developed in order to demonstrate the capabilities of reading the EXTRACT JSON files and consolidation of those data. The REST API's can be called by any post-processing tool using these data for analytical purposes, customer interactions via UI or integration processes. 
+
+## Installation
+
+The installation of this asset is two-fold: in a first step the required tech stack - here *Node.js* and *Express.js* - must be installed and configured on an OCI Compute Instance. Also the required BICC configuration for an extract to OCI Object Storage and the creation of a Network Mount between OCI Object Storage and OCI Compute Instance is a required task. For a quick function test the application itself could run on any PC/Mac - part of this asset are some sample JSON files that can be used. However, the installation for a Cloud environment is more complex and documented in detail.
+
+In a second step we have to configure the security features to ensure that these REST calls are using encrypted data and the calls can only be performed by authenticated users. To avoid injecting the JavaScript code with additional security features we've chosen the option to put the REST server behind an OCI API Gateway and to use IDCS for a management of privileges.
+
+The detailed steps for an according installation are available in detail as follows:
+
+* The creation of an end-to-end configuration to extract BICC extract files to OCI Object Storage including the ability to run the app provided in this asset via *Node.js* for parsing and provisioning of a REST API via *Express.js* is available in PDF file **docs/Install\_Configure\_BICC\_Extract\_Log\_REST\_APIs.pdf**
+* The implementation of an additional security configuration vi API Gateway and IDCS can be found in PDF file **docs/Secure\_BICC\_Extract\_Log\_REST\_APIs.pdf** in this asset 
 
 ## Implementation Scenario covered 
 
@@ -48,7 +53,7 @@ By running this application all available files in a given directory are read an
 
 The program collects all data found into JS arrays and creates program structures as separate internal arrays that will be returned as JSON content when doing the various REST calls. 
 
-After processing these JSON files a REST server will be started via Express.js with the following specifications:
+After processing these JSON files a REST server will be started via *Express.js* with the following specifications:
 
 * if not specified differently by a parameter the listening port of this server is *3000*
 * if not specified differently by a parameter the listing IP address is *127.0.0.1*
@@ -84,7 +89,7 @@ The following fields are read and processed as read from the  various JSON files
 * **rowCount**
 * **errorMessage**
 
-The following fields are **not** part of the processed JSON elements:
+The following fields are **not** part of the processed JSON elements - more elements might be added in BICC in future and are out of scope for this documentation:
 
 * **code**
 * **connDurationInSec**
@@ -101,6 +106,7 @@ The code repository contains two sub-directories holding the ICS exports and Jav
 | **/public**            | directory with a static file *index.html* that documents the existing REST API's 
 | **/sample_files**      | a collection of sample files that can be used for a program validation for those cases where no other BICC Log Files exist 
 | **/test_results**      | a collection of sample JSON files that have been returned from various REST API testing
+| **/docs**              | directory containing PDF files with the detailed instruction for an installation and configuration
 | **biccLogServer.js**      | the Node.js program code as is 
 | **package.json**       | this package configuration 
 
@@ -109,8 +115,8 @@ The code repository contains two sub-directories holding the ICS exports and Jav
 
 The application provided here can be tested as is by using the provided test data. The following tasks are required
 
-* if not done yet install Node.js in the release as listened on top
-* please do the same for Express.js
+* if not done yet install *Node.js* in the release as listened on top
+* please do the same for *Express.js*
 
 To execute the program run on command line:
 
@@ -131,7 +137,7 @@ If the refresh of log data is a demand it can achieved by running a command  lik
 
 ## Further Information
 
-For further information on how this solution works including details about this application is being embedded in a bigger picture, you can find a more detailed architecture overview on the A-Team Chronicles blog page [A-Team Oracle](https://www.ateam-oracle.com/bicc-extract-logs-monitoring-on-oci-native) 
+For further information on how this solution works including details about this application is being embedded in a bigger picture, you can find a more detailed architecture overview on the **[A-Team Chronicles blog page](http://www.ateam-oracle.com)** for the [configuration](https://www.ateam-oracle.com/bicc-extract-logs-monitoring-on-oci-native) and [security setup](https://www.ateam-oracle.com/bicc-securing-extract-logs-rest-services).
 
-Copyright (c) 2020, Oracle and/or its affiliates. 
+Copyright (c) 2021, Oracle and/or its affiliates. 
 Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
