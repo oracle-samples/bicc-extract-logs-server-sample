@@ -751,10 +751,8 @@ extractStats.logData = function()
 
 extractStats.runRESTServer  = function(appPort, host)
 {  
-    // Begin - Modification for Koa
-
     router.get('/', (ctx) => {
-        ctx.body = 'KOA Server from Uli for BICC Utility';
+        ctx.body = 'KOA REST Server for BICC Extract Log Report Utility';
     });
  
     router.get('/reportStatsREST', (ctx) =>

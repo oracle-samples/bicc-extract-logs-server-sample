@@ -8,8 +8,11 @@
 
 ## Third Party Software Used
 
-* Node.js LTS 14.15.1
-* Express.js 4.17.1
+* Node.js 17.4.0
+* Koa.js 2.13.4 including depending modules
+	* koa-buddy 4.2.0
+	* koa-logger 3.2.1
+	* koa-router 10.1.1
 
 ## Introduction
 
