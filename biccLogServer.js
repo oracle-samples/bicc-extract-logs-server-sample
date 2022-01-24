@@ -4,10 +4,20 @@ Licensed under the Universal Permissive License v 1.0 as shown at https://oss.or
 */
 
 const fs = require('fs');
-const express = require('express');
-const app = express();
-const serveStatic = require('serve-static');
+
+// Begin - Newly Added for Koa
+
+const Koa = require('koa');
+const koaBody = require('koa-body');
+const Logger = require("koa-logger");
+const Router = require('koa-router');
 const path = require('path');
+
+const app = new Koa();
+app.use(koaBody());
+const router = new Router();
+
+// End - Newly Added for Koa
 
 var extractStats = new Object();
 extractStats.voArr = new Array();
@@ -741,54 +751,58 @@ extractStats.logData = function()
 
 extractStats.runRESTServer  = function(appPort, host)
 {  
-    app.get('/reportStatsREST', function (req, res)
+    // Begin - Modification for Koa
+
+    router.get('/', (ctx) => {
+        ctx.body = 'KOA Server from Uli for BICC Utility';
+    });
+ 
+    router.get('/reportStatsREST', (ctx) =>
     {
-        res.type('application/json');
-        res.send(JSON.stringify(extractStats.reportStats).toString());
+        ctx.body = extractStats.reportStats;
+    });
+   
+    router.get('/byDateREST', (ctx) =>
+    {
+        ctx.body = extractStats.voRunDateArr;
     });
     
-    app.get('/byDateREST', function (req, res)
+    router.get('/byNameREST', (ctx) =>
     {
-        res.type('application/json');
-        res.send(JSON.stringify(extractStats.voRunDateArr).toString());
+         ctx.body = extractStats.voNameArr;
     });
     
-    app.get('/byNameREST', function (req, res)
+    router.get('/byFailStatusVOREST', (ctx) =>
     {
-        res.type('application/json');
-        res.send(JSON.stringify(extractStats.voNameArr).toString());
+        ctx.body = extractStats.voFailedArrByVO;
     });
     
-    app.get('/byFailStatusVOREST', function (req, res)
+    router.get('/byFailStatusDateREST', (ctx) =>
     {
-        res.type('application/json');
-        res.send(JSON.stringify(extractStats.voFailedArrByVO).toString());
+        ctx.body = extractStats.voFailedArrByDate;
     });
     
-    app.get('/byFailStatusDateREST', function (req, res)
+    router.get('/refreshDataREST', (ctx) =>
     {
-        res.type('application/json');
-        res.send(JSON.stringify(extractStats.voFailedArrByDate).toString());
-    });
-    
-    app.get('/refreshDataREST', function (req, res)
-    {
-        res.type('application/json');
         extractStats.refreshData();
-        res.send(JSON.stringify(extractStats.fileReadStatus).toString());
+        ctx.body = extractStats.fileReadStatus;
     });
     
-     app.get('/bySchedIDREST', function (req, res)
+    router.get('/bySchedIDREST', (ctx) =>
     {
-        res.type('application/json');
-        res.send(JSON.stringify(extractStats.voJobIDArr).toString());
+       ctx.body = extractStats.voJobIDArr;
     });
-       
-    app.use(serveStatic('public', { 'index': ['index.html'] }));
+    
     console.log("Started REST Server at host " + host + " and port " + appPort);
     app.listen(appPort, host);
-    
+
+    app.use(Logger())
+    .use(router.routes())
+    .use(router.allowedMethods());
+
     return;
+
+    // End - Modification for Koa
 };
 
 extractStats.refreshData = function()
