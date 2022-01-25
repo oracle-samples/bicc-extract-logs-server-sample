@@ -20,6 +20,6 @@
         "debug": "DEBUG=pd* nodemon --inspect-brk --harmony --nolazy server.js -e js,mustache,json,yaml"
     },
     "bundleDependencies": [
-        "express"
+        "koa"
     ]
 }

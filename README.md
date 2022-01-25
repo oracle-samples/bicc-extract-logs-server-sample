@@ -10,7 +10,7 @@
 
 * Node.js 17.4.0
 * Koa.js 2.13.4 including depending modules
-	* koa-buddy 4.2.0
+	* koa-body 4.2.0
 	* koa-logger 3.2.1
 	* koa-router 10.1.1
 
