@@ -129,13 +129,13 @@ If running  the program without any parameter the caller will receive a standard
 
 In case the program has been started like shown above the web site can be opened in a browser by opening the following URL:
 
-`http://127.0.0.1:3000`
+`http://<localhost>:3000`
 
 The application will remain running in foreground until being interrupted by Ctrl-C. It has been tested and it works to run the program behind a *nohup* command and to put in into background.
 
 If the refresh of log data is a demand it can achieved by running a command  like this:
 
-`curl http://127.0.0.1:3000/refreshDataREST`
+`curl http://<localhost>:3000/refreshDataREST`
 
 
 ## Further Information
