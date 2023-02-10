@@ -11,10 +11,12 @@ const Koa = require('koa');
 const koaBody = require('koa-body');
 const Logger = require("koa-logger");
 const Router = require('koa-router');
+const koaStatic = require('koa-static');
 const path = require('path');
 
 const app = new Koa();
 app.use(koaBody());
+app.use(koaStatic('./public'));
 const router = new Router();
 
 // End - Newly Added for Koa
@@ -752,7 +754,7 @@ extractStats.logData = function()
 extractStats.runRESTServer  = function(appPort, host)
 {  
     router.get('/', (ctx) => {
-        ctx.body = 'KOA REST Server for BICC Extract Log Report Utility';
+        ctx.redirect('index.html');
     });
  
     router.get('/reportStatsREST', (ctx) =>
