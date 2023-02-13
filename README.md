@@ -13,6 +13,7 @@
 	* koa-body 4.2.0
 	* koa-logger 3.2.1
 	* koa-router 10.1.1
+	* koa-static 5.0.0
 
 ## Introduction
 
@@ -20,7 +21,7 @@ This application provides a sample how the EXTRACT JSON files for BICC extracts 
 
 ## High level architecture
 
-As shown in the figure below this code will read JSON files from a mounted network resource. These files will be parsed and accumulated in memory. Via an Express web server function there are multiple REST API's that provide dedicated views on these data. The content of this service can be refreshed by another REST API call that will re-read the directory and update the internal data structures. According to the asynchronous processing nature of *Node.js* this call may take some time depending on the volume of data to be handled.
+As shown in the figure below this code will read JSON files from a mounted network resource. These files will be parsed and accumulated in memory. Via a Koa web server function there are multiple REST API's that provide dedicated views on these data. The content of this service can be refreshed by another REST API call that will re-read the directory and update the internal data structures. According to the asynchronous processing nature of *Node.js* this call may take some time depending on the volume of data to be handled.
 ![](images/Solution_Architecture.png)
 This solution was developed in order to demonstrate the capabilities of reading the EXTRACT JSON files produced by BICC and the consolidated review of those data. The results are existing as JSON Array Structures internally and will be accessible via various REST API's.  
 
@@ -36,13 +37,13 @@ This solution was developed in order to demonstrate the capabilities of reading 
 
 ## Installation
 
-The installation of this asset is two-fold: in a first step the required tech stack - here *Node.js* and *Express.js* - must be installed and configured on an OCI Compute Instance. Also the required BICC configuration for an extract to OCI Object Storage and the creation of a Network Mount between OCI Object Storage and OCI Compute Instance is a required task. For a quick function test the application itself could run on any PC/Mac - part of this asset are some sample JSON files that can be used. However, the installation for a Cloud environment is more complex and documented in detail.
+The installation of this asset is two-fold: in a first step the required tech stack - here *Node.js* and *Koa.js* - must be installed and configured on an OCI Compute Instance. Also the required BICC configuration for an extract to OCI Object Storage and the creation of a Network Mount between OCI Object Storage and OCI Compute Instance is a required task. For a quick function test the application itself could run on any PC/Mac - part of this asset are some sample JSON files that can be used. However, the installation for a Cloud environment is more complex and documented in detail.
 
 In a second step we have to configure the security features to ensure that these REST calls are using encrypted data and the calls can only be performed by authenticated users. To avoid injecting the JavaScript code with additional security features we've chosen the option to put the REST server behind an OCI API Gateway and to use IDCS for a management of privileges.
 
 The detailed steps for an according installation are available in detail as follows:
 
-* The creation of an end-to-end configuration to extract BICC extract files to OCI Object Storage including the ability to run the app provided in this asset via *Node.js* for parsing and provisioning of a REST API via *Express.js* is available in PDF file **docs/Install\_Configure\_BICC\_Extract\_Log\_REST\_APIs.pdf**
+* The creation of an end-to-end configuration to extract BICC extract files to OCI Object Storage including the ability to run the app provided in this asset via *Node.js* for parsing and provisioning of a REST API via *Koa.js* is available in PDF file **docs/Install\_Configure\_BICC\_Extract\_Log\_REST\_APIs.pdf**
 * The implementation of an additional security configuration vi API Gateway and IDCS can be found in PDF file **docs/Secure\_BICC\_Extract\_Log\_REST\_APIs.pdf** in this asset 
 
 ## Implementation Scenario covered 
@@ -56,7 +57,7 @@ By running this application all available files in a given directory are read an
 
 The program collects all data found into JS arrays and creates program structures as separate internal arrays that will be returned as JSON content when doing the various REST calls. 
 
-After processing these JSON files a REST server will be started via *Express.js* with the following specifications:
+After processing these JSON files a REST server will be started via *Koa.js* with the following specifications:
 
 * if not specified differently by a parameter the listening port of this server is *3000*
 * if not specified differently by a parameter the listing IP address is *127.0.0.1*
@@ -119,7 +120,7 @@ The code repository contains two sub-directories holding the ICS exports and Jav
 The application provided here can be tested as is by using the provided test data. The following tasks are required
 
 * if not done yet install *Node.js* in the release as listened on top
-* please do the same for *Express.js*
+* please do the same for *Koa.js*
 
 To execute the program run on command line:
 
