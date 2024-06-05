@@ -8,11 +8,11 @@
 
 ## Third Party Software Used
 
-* Node.js 18.12.1
-* Koa.js 2.13.4 including depending modules
-	* koa-body 4.2.0
+* Node.js 22.2.0
+* Koa.js 2.15.3 including depending modules
+	* koa-body 6.0.1
 	* koa-logger 3.2.1
-	* koa-router 10.1.1
+	* koa-router 12.0.1
 	* koa-static 5.0.0
 
 ## Introduction
