@@ -10,7 +10,6 @@
 
 * Node.js 22.2.0
 * Koa.js 2.15.3 including depending modules
-	* koa-body 6.0.1
 	* koa-logger 3.2.1
 	* koa-router 12.0.1
 	* koa-static 5.0.0
