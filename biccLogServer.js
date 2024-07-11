@@ -8,14 +8,12 @@ const fs = require('fs');
 // Begin - Newly Added for Koa
 
 const Koa = require('koa');
-const koaBody = require('koa-body');
 const Logger = require("koa-logger");
 const Router = require('koa-router');
 const koaStatic = require('koa-static');
 const path = require('path');
 
 const app = new Koa();
-app.use(koaBody());
 app.use(koaStatic('./public'));
 const router = new Router();
 
