@@ -8,11 +8,18 @@
 
 ## Third Party Software Used
 
+<<<<<<< HEAD
+* Node.js 22.2.0
+* Koa.js 2.15.3 including depending modules
+	* koa-logger 3.2.1
+	* koa-router 12.0.1
+=======
 * Node.js 18.12.1
 * Koa.js 2.13.4 including depending modules
 	* koa-body 4.2.0
 	* koa-logger 3.2.1
 	* koa-router 10.1.1
+>>>>>>> main
 	* koa-static 5.0.0
 
 ## Introduction
@@ -145,6 +152,10 @@ For further information on how this solution works including details about this 
 
 Developers choosing to distribute a binary implementation of this project are responsible for obtaining and providing all required licenses and copyright notices for the third-party code used in order to ensure compliance with their respective open source licenses.
 
+<<<<<<< HEAD
+Copyright (c) 2022, Oracle and/or its affiliates. 
+Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+=======
 ## Contributing
 
 This project welcomes contributions from the community. Before submitting a pull request, please [review our contribution guide](./CONTRIBUTING.md)
@@ -159,3 +170,4 @@ Copyright (c) 2022, 2023 Oracle and/or its affiliates.
 
 Released under the Universal Permissive License v1.0 as shown at
 <https://oss.oracle.com/licenses/upl/>.
+>>>>>>> main
