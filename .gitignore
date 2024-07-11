@@ -1,6 +1,0 @@
-#gitignore.io help:
-#  list    - lists the operating systems, programming languages and IDE input types
-#  :types: - creates .gitignore files for types of operating systems, programming languages or IDEs
-.DS_Store
-nbproject
-sample_files/.DS_Store
