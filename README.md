@@ -8,11 +8,10 @@
 
 ## Third Party Software Used
 
-* Node.js 18.12.1
-* Koa.js 2.13.4 including depending modules
-	* koa-body 4.2.0
+* Node.js 22.2.0
+* Koa.js 2.15.3 including depending modules
 	* koa-logger 3.2.1
-	* koa-router 10.1.1
+	* koa-router 12.0.1
 	* koa-static 5.0.0
 
 ## Introduction
@@ -144,6 +143,7 @@ If the refresh of log data is a demand it can achieved by running a command  lik
 For further information on how this solution works including details about this application is being embedded in a bigger picture, you can find a more detailed architecture overview on the **[A-Team Chronicles blog page](http://www.ateam-oracle.com)** for the [configuration](https://www.ateam-oracle.com/bicc-extract-logs-monitoring-on-oci-native) and [security setup](https://www.ateam-oracle.com/bicc-securing-extract-logs-rest-services).
 
 Developers choosing to distribute a binary implementation of this project are responsible for obtaining and providing all required licenses and copyright notices for the third-party code used in order to ensure compliance with their respective open source licenses.
+
 
 ## Contributing
 
